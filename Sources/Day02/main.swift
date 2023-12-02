@@ -36,11 +36,9 @@ let games = run(part: "Input parsing", closure: prepare)
 let maxCubes = ["red": 12, "green": 13, "blue": 14]
 
 func part1() -> Int {
-    print(maxCubes)
     var idSum = 0
     for game in games {
         var possible = true
-        print(game)
         draw: for draw in game.1 {
             for (count, color) in draw {
                 if maxCubes[color]! < count {
@@ -58,8 +56,16 @@ func part1() -> Int {
 
 _ = run(part: 1, closure: part1)
 
-// func part2() -> Int {
-//     return -1
-// }
+func part2() -> Int {
+    return games.reduce(0) { total, game in
+        var minCubes = ["red": 0, "green": 0, "blue": 0]
+        for draw in game.1 {
+            for (count, color) in draw where minCubes[color]! < count {
+                minCubes[color] = count
+            }
+        }
+        return total + minCubes.values.reduce(1, *)
+    }
+}
 
-// _ = run(part: 2, closure: part2)
+_ = run(part: 2, closure: part2)
