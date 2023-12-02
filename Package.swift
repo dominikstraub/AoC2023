@@ -20,16 +20,16 @@ let package = Package(
             name: "Utils",
             dependencies: []
         ),
-        .executableTarget(
-            name: "Day01",
-            dependencies: ["Utils"],
-            resources: [.process("input.txt"), .process("test.txt"), .process("test2.txt")]
-        ),
         // .executableTarget(
-        //     name: "Day02",
+        //     name: "Day01",
         //     dependencies: ["Utils"],
-        //     resources: [.process("input.txt"), .process("test.txt")]
+        //     resources: [.process("input.txt"), .process("test.txt"), .process("test2.txt")]
         // ),
+        .executableTarget(
+            name: "Day02",
+            dependencies: ["Utils"],
+            resources: [.process("input.txt"), .process("test.txt")]
+        ),
         // .executableTarget(
         //     name: "Day03",
         //     dependencies: ["Utils"],
